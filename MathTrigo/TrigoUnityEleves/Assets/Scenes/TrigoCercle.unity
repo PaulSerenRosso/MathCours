@@ -1716,22 +1716,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {x: 0, y: 0}
   _matrix1:
-    RowCount: 2
-    ColumnCount: 3
-    Rows:
-    - Values: 0500000002000000
-    - Values: 0100000004000000
-    - Values: 0700000006000000
+    RowCount: 0
+    ColumnCount: 0
+    rows:
+    - Values:
+      - 0
+      - 0
+      - 0
+    - Values:
+      - 0
+      - 0
+      - 0
   _matrix2:
-    RowCount: 3
-    ColumnCount: 2
-    Rows:
-    - Values: 040000000300000008000000
-    - Values: 040000000200000003000000
+    RowCount: 0
+    ColumnCount: 0
+    rows: []
   _matrix3:
     RowCount: 0
     ColumnCount: 0
-    Rows: []
+    rows: []
 --- !u!4 &1469758928
 Transform:
   m_ObjectHideFlags: 0
