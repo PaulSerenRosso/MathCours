@@ -1716,15 +1716,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {x: 0, y: 0}
   _matrix1:
-    RowLength: 0
-    ColumnLength: 0
     Rows:
     - Values:
-      - 5
+      - 3
       - 3
       - 3
     - Values:
-      - 4
+      - 3
       - 3
       - 3
     - Values:
@@ -1733,8 +1731,6 @@ MonoBehaviour:
       - 1
     Columns: []
   _matrix2:
-    RowLength: 0
-    ColumnLength: 0
     Rows:
     - Values:
       - 5
@@ -1747,8 +1743,6 @@ MonoBehaviour:
       - 1
     Columns: []
   _matrix3:
-    RowLength: 0
-    ColumnLength: 0
     Rows: []
     Columns: []
 --- !u!4 &1469758928
