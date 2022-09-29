@@ -25,10 +25,9 @@ public class MatrixFactor : MonoBehaviour
         _matrix1.InitializeMatrixConfiguredInEditor();
         _matrix2.InitializeMatrixConfiguredInEditor();
         _matrix3 = FlexMatrixOperator.Multiply( _matrix1, new Vector3(2, 5, 6));
-        float3 result = _matrix3;
+        float3 result = _matrix3; 
+        Debug.Log(result);
     }
-
-   
 }
     
 

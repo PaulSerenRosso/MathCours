@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [Serializable]
-public class FlexMatrixLine
+public struct FlexMatrixLine
 {
     public FlexMatrixLine(float[] values = null)
     {

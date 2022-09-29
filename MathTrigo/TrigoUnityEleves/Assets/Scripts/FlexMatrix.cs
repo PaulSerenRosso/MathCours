@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Matrix4x4 = System.Numerics.Matrix4x4;
 
- [Serializable]
-   public class FlexMatrix
+[Serializable]
+   public struct FlexMatrix
     {
-        // get set columns et l'horizontal
+        //matrice identity *
+        // matrice rotation projection 
         public FlexMatrix(FlexMatrixLine[] _matrixLinesRow)
         {
             int currentCount = _matrixLinesRow[0].Values.Length;
@@ -18,15 +20,15 @@ using UnityEngine;
                     throw new Exception("Matrix Rows don't have the same size");
                 }
             }
-            RowLength = currentCount;
-            ColumnLength = _matrixLinesRow.Length;
-            Rows = new FlexMatrixLine[ColumnLength];
-            for (int i = 0; i < ColumnLength; i++)
+            rowLength = currentCount;
+            columnLength = _matrixLinesRow.Length;
+            Rows = new FlexMatrixLine[columnLength];
+            for (int i = 0; i < columnLength; i++)
             {
                 Rows[i] = new FlexMatrixLine(_matrixLinesRow[i].Values);
             }
 
-            Columns = new FlexMatrixLine[RowLength];
+            Columns = new FlexMatrixLine[rowLength];
             for (int i = 0; i < RowLength; i++)
             {
                 Columns[i] = new FlexMatrixLine(ColumnLength);
@@ -39,10 +41,10 @@ using UnityEngine;
 
         public FlexMatrix(int _RowLength, int _ColumnLength)
         {
-            RowLength = _RowLength;
-            ColumnLength = _ColumnLength;
-            Rows = new FlexMatrixLine[ColumnLength];
-            Columns = new FlexMatrixLine[RowLength];
+            rowLength = _RowLength;
+            columnLength = _ColumnLength;
+            Rows = new FlexMatrixLine[columnLength];
+            Columns = new FlexMatrixLine[rowLength];
             for (int i = 0; i < RowLength; i++)
             {
                 Columns[i] = new FlexMatrixLine(ColumnLength);
@@ -56,7 +58,7 @@ using UnityEngine;
         public void InitializeMatrixConfiguredInEditor()
         {
             Debug.Log(Rows[0].Values.Length);
-            RowLength = Rows[0].Values.Length;
+            rowLength = Rows[0].Values.Length;
             for (int i = 0; i < Rows.Length; i++)
             {
                 if (RowLength != Rows[i].Values.Length)
@@ -65,7 +67,7 @@ using UnityEngine;
                 }
             }
             Debug.Log(RowLength);
-            ColumnLength = Rows.Length;
+            columnLength = Rows.Length;
             Columns = new FlexMatrixLine[RowLength];
             for (int i = 0; i < RowLength; i++)
             {
@@ -197,12 +199,27 @@ using UnityEngine;
             throw new Exception("matrix can't be casted");
         }
 
-        [HideInInspector]
-        public int RowLength;
-        [HideInInspector]
-        public int ColumnLength;
-        
+
+
+        public int RowLength
+        {
+            get
+            {
+                return rowLength;
+            }
+        }
+
+        public int ColumnLength
+        {
+            get
+            {
+                return columnLength;
+            }
+        }
+        private int rowLength ;
+        private int columnLength;
         public FlexMatrixLine[] Rows;
+       [HideInInspector]
         public FlexMatrixLine[] Columns;
         
 

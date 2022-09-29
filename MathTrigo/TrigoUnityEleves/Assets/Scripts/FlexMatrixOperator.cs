@@ -10,11 +10,11 @@ public static class FlexMatrixOperator
         Debug.Log(_firstMatrix.RowLength + "   " +_secondMatrix.ColumnLength);
         if (_firstMatrix.RowLength == _secondMatrix.ColumnLength)
         {
-            FlexMatrix result = new FlexMatrix(_firstMatrix.ColumnLength, _firstMatrix.ColumnLength);
+            FlexMatrix result = new FlexMatrix(_secondMatrix.RowLength, _firstMatrix.ColumnLength);
             for (int i = 0; i < _firstMatrix.ColumnLength; i++)
             {
                 FlexMatrixLine row = _firstMatrix.Rows[i];
-                for (int j = 0; j < _firstMatrix.ColumnLength; j++)
+                for (int j = 0; j < _secondMatrix.RowLength; j++)
                 {
                     FlexMatrixLine column = _secondMatrix.Columns[j];
                     for (int k = 0; k < _firstMatrix.RowLength; k++)
@@ -63,5 +63,15 @@ public static class FlexMatrixOperator
            return result;
        }
        throw new Exception("Matrixes are not compatibles");
+   }
+
+   public static FlexMatrix GetIdentityMatrix(int rowSize, int columnSize)
+   {
+       FlexMatrix result = new FlexMatrix(rowSize, columnSize);
+       for (int i = 0; i < result.Rows.Length; i++)
+       {
+           result.Rows[i].Values[i] = 1;
+       }
+       return new FlexMatrix();
    }
 }
